@@ -32,8 +32,25 @@ jobs:
       - name: Installing dependencies
         run: cd probando && npm install
 
-  build:
+  tests:
     needs: [dependencies]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4.0.0
+        with:
+          cache: "npm"
+          node-version: "21.1.0"
+          cache-dependency-path: "probando/*"
+      - name: Installing dependencies
+        run: cd probando && npm ci
+      - name: Testing
+        run: npm run test
+
+  build:
+    needs: [dependencies, tests]
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4.1.1
@@ -54,7 +71,7 @@ jobs:
           path: probando/dist
 
   deploy:
-    needs: [build]
+    needs: [tests, build]
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4.1.1
@@ -67,8 +84,6 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
-          healthcheck: "http://1023c12-grupo2-pi.s3-website-us-east-1.amazonaws.com/"
-          rollbackonhealthcheckfailed: true
       - uses: actions/download-artifact@v2.1.1
         with:
           name: dist
