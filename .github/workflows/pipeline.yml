@@ -66,8 +66,8 @@ jobs:
         with:
           access_key_id: ${{secrets.AWS_ACCESS_KEY_ID}}
           secret_access_key: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_region: ${{secrets.AWS_REGION}}
-          healthcheck: "http://1023c12-grupo2-pi.s3-website-us-east-1.amazonaws.com/"
-          rollbackonhealthcheckfailed: true
+          aws_region: us-east-1
+          # healthcheck: "http://1023c12-grupo2-pi.s3-website-us-east-1.amazonaws.com/"
+          # rollbackonhealthcheckfailed: true
       - name: Deploy to AWS S3
         run: aws s3 sync ./dist/. s3://1023c12-grupo2
