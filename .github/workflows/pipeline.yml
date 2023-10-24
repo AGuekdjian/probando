@@ -50,7 +50,7 @@ jobs:
         run: cd probando && npm run test
 
   build:
-    needs: [dependencies, tests]
+    needs: [dependencies]
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4.1.1
