@@ -19,10 +19,11 @@ jobs:
   dependencies:
     runs-on: ubuntu-22.04
     steps:
+      - name: Move to project
+        run: cd probando
       - uses: actions/checkout@v4.1.1
         with:
           fetch-depth: 0
-          working-directory: /probando
       - name: view
         run: ls
       - uses: actions/setup-node@v4.0.0
