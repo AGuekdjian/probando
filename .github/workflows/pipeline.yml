@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - probando/**/*
-    branches: [main]
+    branches: [frontend]
   pull_request:
     branches: [main]
     types: [opened, synchronize]
