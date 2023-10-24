@@ -71,7 +71,7 @@ jobs:
           # rollbackonhealthcheckfailed: true
       - uses: actions/download-artifact@v2.1.1
         with:
-          name: probando/dist
+          name: dist
           path: probando/dist
       - name: Deploy to AWS S3
         run: aws s3 sync ./probando/dist/. s3://1023c12-grupo2
