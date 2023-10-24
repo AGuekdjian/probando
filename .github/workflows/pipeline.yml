@@ -2,8 +2,8 @@ name: Deployments Pipeline
 
 on:
   push:
-    # paths:
-    #   - probando/**/*
+    paths:
+      - probando/**/*
     branches: [main]
   pull_request:
     branches: [main]
