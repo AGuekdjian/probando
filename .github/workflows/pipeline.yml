@@ -28,9 +28,6 @@ jobs:
         with:
           node-version: "21.1.0"
           cache: "npm"
-          cache-dependency-path: "probando/*"
-      - name: Move to project
-        run: cd probando
       - name: Installing dependencies
         run: npm install
 
