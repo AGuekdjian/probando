@@ -1,11 +1,9 @@
 name: Deployments Pipeline
 
 on:
-  push:
+  pull_request:
     paths:
       - probando/**/*
-    branches: [main]
-  pull_request:
     branches: [main]
     types: [opened, synchronize]
 
