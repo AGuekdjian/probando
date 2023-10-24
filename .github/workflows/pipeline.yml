@@ -3,7 +3,7 @@ name: Deployments Pipeline
 on:
   push:
     paths:
-      - probando
+      - probando/**/*
     branches: [main]
   pull_request:
     branches: [main]
