@@ -74,4 +74,4 @@ jobs:
           name: dist
           path: probando/dist
       - name: Deploy to AWS S3
-        run: aws s3 sync ./probando/dist/. s3://1023c12-grupo2
+        run: aws s3 sync ./probando/dist/. s3://1023c12-grupo2-pi
