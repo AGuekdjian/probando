@@ -69,7 +69,9 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
           # healthcheck: "http://1023c12-grupo2-pi.s3-website-us-east-1.amazonaws.com/"
           # rollbackonhealthcheckfailed: true
-      - name: where i am?
-        run: ls && ls probando
+      - uses: actions/download-artifact@v2.1.1
+        with:
+          name: probando/dist
+          path: probando/dist
       - name: Deploy to AWS S3
         run: aws s3 sync ./probando/dist/. s3://1023c12-grupo2
